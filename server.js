@@ -2,8 +2,10 @@ import { ApolloServer, gql } from 'apollo-server';
 
 const typeDefs = gql`
   type Movie {
-    title: String
-    year: Int
+    id: Int!
+    title: String!
+    year: Int!
+    createdAt: Date
   }
 
   type Query {
