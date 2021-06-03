@@ -1,4 +1,5 @@
 import client from '../../client';
+import { uploadToS3 } from '../../shared/shared.utils';
 import { protectedResolver } from '../../users/users.utils';
 import { processCategories, slugify } from '../coffeeShops.utills';
 
@@ -32,9 +33,10 @@ const resolverFn = async (
     });
 
     // create new photo
+    const fileUrl = await uploadToS3(url, loggedInUser.id, 'uploads');
     const newCoffeeShopPhoto = await client.coffeeShopPhoto.create({
       data: {
-        url,
+        url: fileUrl,
         shop: {
           connect: {
             id: newCoffeeShop.id,
