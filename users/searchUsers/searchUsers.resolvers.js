@@ -1,5 +1,5 @@
 import client from '../../client';
-import { SEARCH_PAGE_SIZE } from '../../shared/constants';
+import { LARGE_PAGE_SIZE } from '../../shared/constants';
 
 export default {
   Query: {
@@ -11,7 +11,7 @@ export default {
             startsWith: keyword,
           },
         },
-        take: SEARCH_PAGE_SIZE,
+        take: LARGE_PAGE_SIZE,
         skip: (page - 1) * SEARCH_PAGE_SIZE,
       });
 

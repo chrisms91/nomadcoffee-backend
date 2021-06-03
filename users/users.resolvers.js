@@ -1,5 +1,5 @@
 import client from '../client';
-import { FOLLOW_PAGE_SIZE } from '../shared/constants';
+import { SMALL_PAGE_SIZE } from '../shared/constants';
 
 export default {
   User: {
@@ -7,8 +7,8 @@ export default {
       const followingList = await client.user
         .findUnique({ where: { id } })
         .following({
-          take: FOLLOW_PAGE_SIZE,
-          skip: (page - 1) * FOLLOW_PAGE_SIZE,
+          take: SMALL_PAGE_SIZE,
+          skip: (page - 1) * SMALL_PAGE_SIZE,
         });
       return followingList;
     },
@@ -16,8 +16,8 @@ export default {
       const followersList = await client.user
         .findUnique({ where: { id } })
         .followers({
-          take: FOLLOW_PAGE_SIZE,
-          skip: (page - 1) * FOLLOW_PAGE_SIZE,
+          take: SMALL_PAGE_SIZE,
+          skip: (page - 1) * SMALL_PAGE_SIZE,
         });
       return followersList;
     },
